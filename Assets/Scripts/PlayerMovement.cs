@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 
 
@@ -11,10 +12,12 @@ public class PlayerMovement : MonoBehaviour
     private bool jump = false;
     private bool crouch = false;
 
+    public SpriteRenderer player;
+
     void Update()
     {
         horiMove = Input.GetAxisRaw("Horizontal") * walkSpeed;
-        if (Input.GetButtonDown("Jump"))
+       /* if (Input.GetButtonDown("Jump"))
         {
             jump = true;
         }
@@ -25,12 +28,20 @@ public class PlayerMovement : MonoBehaviour
         else if (Input.GetButtonUp("Crouch"))
         {
             crouch = false;
-        }
+        }*/
     }
 
     void FixedUpdate()
     {
-        cont.Move(horiMove * Time.fixedDeltaTime,crouch,jump);
-        jump = false;
+        cont.Move(horiMove * Time.fixedDeltaTime,false,false);
+        
+    }
+
+    public void FlipView()
+    {
+        if (Input.GetButtonDown("V"))
+        {
+
+        }
     }
 }
